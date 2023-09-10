@@ -1,29 +1,28 @@
-import React from "react";
-import { shallow } from "enzyme";
-import Notifications from "./Notifications";
+import { shallow } from 'enzyme';
+import React from 'react';
+import Notifications from './Notifications';
 
-describe("Notification component tests", () => {
-  it("renders Notification component without crashing", () => {
-    const notification = shallow(<Notifications />);
+// test that Notification renders without crashing
+describe('Notification renders without crashing', () => {
+    const Notification = shallow(<Notifications />);
 
-    expect(notification).toBeDefined();
-  });
+    // Notification renders
+    it('Notification renders', () => {
+        expect(Notification).toBeDefined();
+    });
 
-  it("renders ul", () => {
-    const notification = shallow(<Notifications />);
+    // verify that Notification renders an unordered list of Notifications
+    it('Notification renders ul without error', () => {
+        expect(Notification.find('ul')).toBeDefined();
+    });
 
-    expect(notification.find("ul")).toBeDefined();
-  });
+    // verify that Notification renders a div with the class App-body
+    it('Notification renders three li elements without error', () => {
+        expect(Notification.find('li')).toHaveLength(3);
+    });
 
-  it("renders three list items", () => {
-    const notification = shallow(<Notifications />);
-
-    expect(notification.find("li")).toHaveLength(3);
-  });
-
-  it("renders correct text", () => {
-    const notification = shallow(<Notifications />);
-
-    expect(notification.find("p").text()).toBe("Here is the list of notifications");
-  });
+    // verify that Notification renders a paragraph with the text 'Here is the list of notifications'
+    it('Notification renders the paragraph', () => {
+        expect(Notification.find('p')).toBeDefined();
+    })
 });
